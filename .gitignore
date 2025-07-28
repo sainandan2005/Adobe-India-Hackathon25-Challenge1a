@@ -1,0 +1,20 @@
+# Large sample files (not required for submission)
+sample_dataset/pdfs/*.pdf
+sample_dataset/outputs_generated/*.json
+
+# Keep only the schema and expected outputs
+!sample_dataset/schema/
+!sample_dataset/outputs/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

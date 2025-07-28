@@ -34,18 +34,28 @@ docker run --rm -v $(pwd)/input:/app/input:ro -v $(pwd)/output/repoidentifier/:/
 - **Open Source**: All libraries, models, and tools must be open source
 - **Cross-Platform**: Test on both simple and complex PDFs
 
-## Sample Solution Structure
+## Repository Structure
 ```
-Challenge_1a/
-├── sample_dataset/
-│   ├── outputs/         # JSON files provided as outputs.
-│   ├── pdfs/            # Input PDF files
-│   └── schema/          # Output schema definition
-│       └── output_schema.json
-├── Dockerfile           # Docker container configuration
-├── process_pdfs.py      # Sample processing script
-└── README.md           # This file
+Adobe-India-Hackathon25-Challenge1a/
+├── Dockerfile              # ✅ REQUIRED: Container configuration
+├── process_pdfs.py         # ✅ REQUIRED: Main processing script
+├── README.md              # ✅ REQUIRED: Documentation
+├── .gitignore             # Git ignore patterns
+└── sample_dataset/        # 📁 OPTIONAL: For testing/validation
+    ├── outputs/           # Expected output format examples
+    ├── pdfs/              # Sample input PDFs (for local testing)
+    └── schema/            # JSON schema definition
+        └── output_schema.json
 ```
+
+## Core Files for Submission
+**✅ Essential files (evaluated by judges):**
+- `Dockerfile` - Container configuration with all dependencies
+- `process_pdfs.py` - Main PDF processing logic
+- `README.md` - Documentation of approach and libraries
+
+**📁 Supporting files (optional):**
+- `sample_dataset/` - Test data for development and validation
 
 ## Sample Implementation
 

@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --no-cache-dir \
     PyPDF2==3.0.1 \
     pdfplumber==0.10.3 \
+    PyMuPDF==1.23.0 \
     && pip cache purge
 
 # Copy the processing script

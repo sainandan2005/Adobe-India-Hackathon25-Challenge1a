@@ -385,11 +385,26 @@ def analyze_text_formatting(doc):
             # Check if this looks like a heading
             is_bold = flags & 2**4  # Bold flag
             is_large = size > avg_size * 1.2
-            is_heading_like = (
-                is_bold or is_large or
+            
+            # Prioritize content patterns over font size
+            is_content_heading = (
                 text.isupper() or
-                any(text.startswith(prefix) for prefix in ["Chapter", "Section", "Part"])
+                any(text.startswith(prefix) for prefix in ["Chapter", "Section", "Part", "Appendix"]) or
+                any(text.upper().startswith(prefix.upper()) for prefix in [
+                    "Introduction", "Conclusion", "Abstract", "Summary", "Overview"
+                ]) or
+                # Numbered sections
+                any(text.startswith(prefix) for prefix in [
+                    '1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.',
+                    '1.1', '1.2', '1.3', '2.1', '2.2', '2.3', '3.1', '3.2'
+                ])
             )
+            
+            # Font formatting as secondary indicator
+            is_format_heading = (is_bold or is_large) and len(text) < 100
+            
+            # Combine content patterns (primary) with formatting (secondary)
+            is_heading_like = is_content_heading or (is_format_heading and not text.endswith('.'))
             
             if is_heading_like:
                 # Determine heading level based on size
